@@ -1,0 +1,81 @@
+<br><div class="container text-center bg-success text-white">
+    <h2>Seleccione una opción para manejar el dinero de su inversión</h2>
+</div><br>
+<div class="container text-center">
+    <div class="card">
+        <!-- <img class="card-img-top" height="30" width="30">-->
+         <div class="card-body">
+           <h4 class="card-title">Portafolio a recomponer: {{inversion.nombre}}</h4>
+           <h4 class="card-text">Inversión total en el portafolio: ${{inversion.montoInvertido}}</h4><br>
+            <button class="btn btn-success" type="button" (click) = "entero = true;" *ngIf="!porcentaje; else elseBlock2">Invertir un porcentaje del Total</button>
+    <br><br><button class="btn btn-success" type="button" (click) = "porcentaje = true;" *ngIf="!entero; else elseBlock1">Invertir una parte entera del Total</button>
+         </div>
+    </div>
+
+<ng-template #elseBlock1>
+    <div class="container text-center">
+        <h2>Inversión por porcentajes</h2>
+        <button type="button" class="btn btn-info" (click)="cargarPortafoliosDisponibles(inversion.idUsuario)">Mostrar portafolios disponibles</button>
+    </div>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let portafolio of portafolios">
+            <br><div class="card">
+                <h4 class="card-title">
+                    {{portafolio.nombre}}
+                </h4>
+                <div class="card-body">
+                    <p class="card-text">
+                        Inversión mínima: ${{portafolio.minimoInversion}}<br>
+                        Permanencia minima: {{portafolio.minimaPermanencia}} días<br>
+                        Será activado en {{portafolio.diasActivacion}} días
+                    </p><br>
+                    <button class="btn btn-success">Invertir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</ng-template> 
+
+<ng-template #elseBlock2>
+    <div class="container text-center">
+        <h2>Inversión por partes enteras</h2>
+        <button type="button" class="btn btn-info" (click)="cargarPortafoliosDisponibles(inversion.idUsuario)">Mostrar portafolios disponibles</button>
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let portafolio of portafolios">
+            <br><div class="card">
+                <h4 class="card-title">
+                    {{portafolio.nombre}}
+                </h4>
+                <div class="card-body">
+                    <p class="card-text">
+                        Inversión mínima: ${{portafolio.minimoInversion}}<br>
+                        Permanencia minima: {{portafolio.minimaPermanencia}} días<br>
+                        Será activado en {{portafolio.diasActivacion}} días
+                    </p><br>
+                    <button class="btn btn-success" (click) = "ingresoDatos = true">Invertir</button>
+
+                    <ng-container *ngIf="ingresoDatos; else elseBlock3">
+                        <form>
+                            <div class="form-group row">
+                                <label for="montoInvertido" class="col-form-label col-sm-3">Valor a invertir: </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="montoInvertido">
+                                    </div>
+                                    <button (click)="cargaInversion(inversion.idUsuario, portafolio.idPortafolio, montoInvertido)" class="btn btn-success">Confirmar</button>
+                            </div>
+                        </form>
+                    </ng-container>
+
+                </div>
+            </div>
+        </div>
+    </div><br>
+</ng-template> 
+
+</div>
+
+
+
+

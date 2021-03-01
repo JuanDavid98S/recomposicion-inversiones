@@ -1,0 +1,24 @@
+<div class="container text-center bg-success text-white">
+    <h1>Bienvenido al sistema {{usuario.nombre}}</h1>
+    <h3>Los siguientes son los portafolios que tienes inscritos actualmente</h3><br>
+</div><br>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4" *ngFor="let portafolio of portafoliosUsuario">
+        <div class="card-group">
+          <div class="card">
+           <!-- <img class="card-img-top" height="30" width="30">-->
+            <div class="card-body">
+              <h4 class="card-title">{{portafolio.nombre}}</h4>
+              <p class="card-text">Este portafolio tiene una inversión mínima de: ${{portafolio.minimoInversion}} colombianos, debe estar suscrito
+                  por {{portafolio.minimaPermanencia}} y tiene un tiempo de activación de {{portafolio.diasActivacion}} días hábiles.
+              </p><br>
+              <p>Actualmente, tu inversión en este portafolio es de:</p>
+              <h5 class="text-center">${{portafolio.montoInvertido}}</h5>
+              <button class="btn btn-success" type="button" [routerLink] = "['inversion',portafolio.idUsuarioPortafolio]">Recomponer</button>
+              <p></p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

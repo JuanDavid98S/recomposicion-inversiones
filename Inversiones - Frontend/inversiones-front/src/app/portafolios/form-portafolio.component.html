@@ -1,0 +1,33 @@
+<div class="container p-3 my-3 border">
+    
+    <div class="card-body">
+        <h4 class="card-title">{{titulo}}</h4><br>
+            <form>
+                <div class="container text-center">{{portafolio.nombre}}</div><br>
+                <div class="form-group row">
+                    <label for="ingresoEmpresa" class="col-form-label col-sm-3">Permanencia en la empresa</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="ingresoEmpresa" [(ngModel)]="portafolio.ingresoEmpresa">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label for="inversionTotalMinima" class="col-form-label col-sm-3">Inversión total mínima</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="inversionTotalMinima" [(ngModel)]="portafolio.inversionTotalMinima">
+                    </div>
+                </div>
+                <br>
+                <div class="container text-center"><button role="button" class="btn btn-success" (click)='actualizar();'>Confirmar cambios</button></div><br>
+                <div class="container text-center"><button role="button" class="btn btn-success" (click)='obtenerCiudades(portafolio.idPortafolio);'>Verificar ciudades</button></div>
+            </form>
+    </div>
+</div>
+<div class="container p-3 border">
+    <h5>Ciudades asociadas al portafolio</h5>
+    <div *ngFor="let ciudad of ciudades">
+       <p>{{ciudad.idCiudad}}</p> 
+    </div>
+</div>
+
+

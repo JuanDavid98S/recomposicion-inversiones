@@ -1,0 +1,30 @@
+<div class="container p-3 my-3 bg-success text-white text-center">
+  <h1>{{titulo}}</h1><br>
+</div>
+
+<div class="container">
+  <div class="row row-cols-2 g-4">
+    <div class="col-sm-3 col-md-3" *ngFor="let portafolio of portafolios">
+      <div class="card-group" >
+          <material-card>
+            <mat-card-title><h4>{{portafolio.nombre}}</h4></mat-card-title> 
+              	<mat-card-content>
+                  <p class="card-text">Inversión mínima: {{portafolio.minimoInversion}}</p>
+                  <p class="card-text">Permanencia mínima: {{portafolio.minimaPermanencia}}</p>
+                  <p class="card-text">Días para activación: {{portafolio.diasActivacion}}</p>
+                  <p class="card-text">Penalización: {{portafolio.penalizacion}}</p>
+                  <p class="card-text">Permanencia en la empresa: {{portafolio.ingresoEmpresa}}</p>
+                  <p class="card-text">Inversión total en la empresa: {{portafolio.inversionTotalMinima}}</p>
+                  <button class="btn btn-success" type="button" [routerLink] = "['/portafolios/form', portafolio.idPortafolio]">Actualizar</button>
+                  <p></p>
+                </mat-card-content>
+        </material-card>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ 

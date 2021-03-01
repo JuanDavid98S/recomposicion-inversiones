@@ -1,0 +1,21 @@
+<br>
+<div class="container text-center">
+    <h1>Componente para ingreso en el sistema</h1><br>
+    <h4>Seleccione el modo en el que desea ingresar al sistema</h4><br>
+    <div class="row">
+        <div class="col">
+            <div class="container p-3 border">
+                <h4>En esta sección podrá actualizar la información de los portafolios.</h4>
+                <button type="button" class="btn btn-success" [routerLink] = "['/portafolios']">Ingresar como administrador</button>
+            </div><br>
+            <div class="container p-3 border">
+                <h4>En esta sección podrá realizar el proceso de recomposición de inversión</h4>
+                <div class="container" *ngFor="let usuario of usuarios">
+                    <br><button type="button" class="btn btn-success" [routerLink] = "['/usuarios/sesion', usuario.idUsuario]">Portafolios activos de {{usuario.nombre}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
